@@ -1,0 +1,14 @@
+{
+        "pageLoadTimeout":20000,
+        "baseUrl": "https://trello.com/",
+        "chromeWebSecurity": false,
+        "integrationFolder": "./cypress/integration/examples/",
+        "testFiles": "**.js",
+         "reporter": "junit",
+         "reporterOptions": {
+           "mochaFile": "results/test-results.xml",
+           "testCaseSwitchClassnameAndName": false
+         }
+       
+
+  }    
