@@ -1,7 +1,9 @@
 # Starter pipeline
 - task: ExtractFiles@1
   inputs:
-    archiveFilePatterns: 'tests*.zip'
+    archiveFilePatterns: '- task: CmdLine@2
+  inputs:
+    script: 'npm run test''
     destinationFolder: '${System.DefaultWorkingDirectory}/tests'
     cleanDestinationFolder: true
 # Start with a minimal pipeline that you can customize to build and deploy your code.
@@ -22,3 +24,11 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '*.xml'
+    searchFolder: '$(System.DefaultWorkingDirectory)/results'
+    mergeTestResults: true
+    failTaskOnFailedTests: true
+    testRunTitle: 'Cypress tests results'
